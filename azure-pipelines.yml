@@ -21,6 +21,12 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean install'
   displayName: Running unit test and generating artifacts
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/*.jar'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: Copy .jar file artifact staging directory
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
