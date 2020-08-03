@@ -27,6 +27,7 @@ steps:
     Contents: '**/*.jar'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: Copy .jar file artifact staging directory
+  
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
