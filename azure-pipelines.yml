@@ -10,11 +10,16 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-
 - task: SonarQubePrepare@4
   inputs:
     SonarQube: 'TestConnectionSonarQube'
     scannerMode: 'Other'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.projectName=demo-exchange
+      sonar.projectKey=demo-exchange
 
 - task: Maven@3
   inputs:
